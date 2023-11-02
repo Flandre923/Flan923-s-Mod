@@ -25,7 +25,7 @@ public class WoodBallItem extends SnowballItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player playerIn, InteractionHand handIn) {
         ItemStack itemStack =playerIn.getItemInHand(handIn);
-        if(playerIn.getAbilities().instabuild){
+        if(!playerIn.getAbilities().instabuild){
             itemStack.shrink(1);
         }
         //播放声音

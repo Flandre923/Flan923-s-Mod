@@ -4,6 +4,7 @@ import com.example.examplemod.ExampleMod;
 import com.example.examplemod.item.custom.WoodBallItem;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegistryObject;
@@ -15,6 +16,12 @@ public class ModItem {
 
     public static final RegistryObject<Item> WOOD_BALL =
             ITEMS.register("wood_ball",WoodBallItem::new);
+
+
+
+    public static void register(IEventBus eventBus){
+        ITEMS.register(eventBus);
+    }
 
 
 }

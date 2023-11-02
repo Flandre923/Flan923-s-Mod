@@ -5,6 +5,7 @@ import com.example.examplemod.entity.custom.WoodBallEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegistryObject;
@@ -24,4 +25,8 @@ public class ModEntities {
                     .setShouldReceiveVelocityUpdates(true)
                             .build(new ResourceLocation(ExampleMod.MODID,"wood_ball_entity").toString())
     );
+
+    public static void register(IEventBus eventBus){
+        ENTITY_TYPES.register(eventBus);
+    }
 }
