@@ -144,14 +144,13 @@ public class WoodBallExplosion extends Explosion {
 
         if (blockstate.canDropFromExplosion(this.level, blockpos, this) && this.level instanceof ServerLevel) {
           BlockEntity tileentity = blockstate.hasBlockEntity() ? this.level.getBlockEntity(blockpos) : null;
-          //todo
-//           LootContext.Builder builder = (new LootContext.Builder(new LootParams.Builder((ServerLevel) level).create(LootContextParamSets.ADVANCEMENT_LOCATION))).withRandom(this.level.random).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, tileentity).withOptionalParameter(LootContextParams.THIS_ENTITY, this.source);
+          LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, tileentity).withOptionalParameter(LootContextParams.THIS_ENTITY, this.source);
 
           if (this.blockInteraction == Explosion.BlockInteraction.DESTROY) {
-            //builder.withParameter(LootContextParams.EXPLOSION_RADIUS, this.radius);
+            builder.withParameter(LootContextParams.EXPLOSION_RADIUS, this.radius);
           }
 
-          //blockstate.getDrops(builder).forEach((stack) -> addStack(arrayList, stack, blockpos1));
+          blockstate.getDrops(builder).forEach((stack) -> addStack(arrayList, stack, blockpos1));
         }
 
         blockstate.onBlockExploded(this.level, blockpos, this);

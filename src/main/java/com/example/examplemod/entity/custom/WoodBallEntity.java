@@ -2,17 +2,19 @@ package com.example.examplemod.entity.custom;
 
 import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.item.ModItem;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.entity.IEntityAdditionalSpawnData;
+import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.network.NetworkHooks;
 
 public class WoodBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
@@ -39,8 +41,10 @@ public class WoodBallEntity extends ThrowableItemProjectile implements IEntityAd
     @Override
     protected void onHit(HitResult p_37260_) {
         if(!this.level().isClientSide){
-            //生成爆炸
-            // TODO: 2023/11/1
+            WoodBallExplosion explosion = new WoodBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(), 6f, false, Explosion.BlockInteraction.KEEP);
+            if (!EventHooks.onExplosionStart(this.level(), explosion)) {
+                Exploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()), 6f, 6f);
+            }
         }
 
         //  ?
