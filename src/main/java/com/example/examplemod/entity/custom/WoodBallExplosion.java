@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -32,6 +33,7 @@ import org.apache.logging.log4j.core.jmx.Server;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -80,7 +82,7 @@ public class WoodBallExplosion extends Explosion {
    * Does the first part of the explosion (destroy blocks)
    */
   @Override
-  public void explode() {
+  public void explode() { // 未执行
     ImmutableSet.Builder<BlockPos> builder = ImmutableSet.builder();
 
     // we do a sphere of a certain radius, and check if the blockpos is inside the radius
@@ -123,7 +125,7 @@ public class WoodBallExplosion extends Explosion {
   }
 
   @Override
-  public void finalizeExplosion(boolean spawnParticles) {
+  public void finalizeExplosion(boolean spawnParticles) {  // 未执行
     if (this.level.isClientSide) {
       this.level.playLocalSound(this.x, this.y, this.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 4.0F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
@@ -131,7 +133,7 @@ public class WoodBallExplosion extends Explosion {
     this.level.addParticle(ParticleTypes.EXPLOSION, this.x, this.y, this.z, 1.0D, 0.0D, 0.0D);
 
     ObjectArrayList<Pair<ItemStack, BlockPos>> arrayList = new ObjectArrayList<>();
-    Collections.shuffle(this.toBlow, new Random());
+    Util.shuffle(this.toBlow, this.level.random);
 
     for (BlockPos blockpos : this.toBlow) {
       BlockState blockstate = this.level.getBlockState(blockpos);
@@ -181,5 +183,14 @@ public class WoodBallExplosion extends Explosion {
     }
 
     arrayList.add(Pair.of(merge, blockPos));
+  }
+
+
+  public List<BlockPos> getToBlow() {
+    return this.toBlow;
+  }
+
+  public void clearToBlow() {
+    this.toBlow.clear();
   }
 }
