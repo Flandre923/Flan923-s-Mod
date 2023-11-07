@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
-public class Exploder {
+public class NormalExploder {
 
   public final double r;
   private final double rr;
@@ -39,7 +39,7 @@ public class Exploder {
   public final int x, y, z;
   public final Level world;
   private final Entity exploder;
-  private final WoodBallExplosion explosion;
+  private final NormalBallExplosion explosion;
 
   private int currentRadius;
   private int curX, curY, curZ;
@@ -56,7 +56,7 @@ public class Exploder {
    * @param explosionStrength 爆炸的破坏力
    * @param blocksPerIteration 每次迭代处理的方块次数
    */
-  public Exploder(Level world, WoodBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration) {
+  public NormalExploder(Level world, NormalBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration) {
     this.r = r;
     this.world = world;
     this.explosion = explosion;
@@ -87,15 +87,15 @@ public class Exploder {
    * @param r  爆炸的半径
    * @param explosionStrength 爆炸的强度
    */
-  public static void startExplosion(Level world, WoodBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength) {
+  public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength) {
     // 创建类
-    Exploder exploder = new Exploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)));
+    NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)));
     // 提前处理爆炸范围内的实体
-    exploder.handleEntities();
+    normalExploder.handleEntities();
     // 播放爆炸的声音
     world.playSound(null, location, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 4.0F, (1.0F + (world.random.nextFloat() - world.random.nextFloat()) * 0.2F) * 0.7F);
     // 在事件总线上注册exploer，用于在tick时迭代处理
-    NeoForge.EVENT_BUS.register(exploder);
+    NeoForge.EVENT_BUS.register(normalExploder);
   }
 
   /**

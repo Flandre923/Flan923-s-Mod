@@ -1,26 +1,23 @@
 package com.example.examplemod.item.custom;
 
-import com.example.examplemod.entity.custom.WoodBallEntity;
+import com.example.examplemod.entity.custom.NormalBallEntity;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SnowballItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.event.entity.player.SleepingLocationCheckEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class WoodBallItem extends SnowballItem {
+public class NormalBallItem extends SnowballItem {
     public  final int size; // 爆炸范围
 
-    public WoodBallItem(int size) {
+    public NormalBallItem(int size) {
         super((new Properties()).stacksTo(16));
         this.size = size;
     }
@@ -32,16 +29,19 @@ public class WoodBallItem extends SnowballItem {
             itemStack.shrink(1);
         }
         //播放声音
-        // TODO: 2023/11/1
         if(!level.isClientSide()){
             // 生成实体
-            WoodBallEntity entity = new WoodBallEntity(level,playerIn,this.size);
-            entity.setItem(itemStack);
-            entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
-            level.addFreshEntity(entity);
+            this.generateEntity(level,playerIn,itemStack);
         }
         playerIn.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.sidedSuccess(itemStack,level.isClientSide());
+    }
+
+    public void generateEntity(Level level,Player playerIn,ItemStack itemStack){
+        NormalBallEntity entity = new NormalBallEntity(level,playerIn,this.size);
+        entity.setItem(itemStack);
+        entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
+        level.addFreshEntity(entity);
     }
 
     @Override

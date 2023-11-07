@@ -17,20 +17,20 @@ import net.neoforged.neoforge.entity.IEntityAdditionalSpawnData;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.network.NetworkHooks;
 
-public class WoodBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
+public class NormalBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
 
     public final int size;// 爆炸范围
-    public WoodBallEntity(EntityType<? extends ThrowableItemProjectile> entityType,Level level){
+    public NormalBallEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level){
         super(entityType,level);
         this.size = 0;
     }
 
-    public WoodBallEntity(Level worldIn, LivingEntity throwerIn,int size) {
+    public NormalBallEntity(Level worldIn, LivingEntity throwerIn, int size) {
         super(ModEntities.WOOD_ENTITY.get(), throwerIn, worldIn);
         this.size = size;
     }
 
-    public WoodBallEntity(Level worldIn, double x, double y, double z) {
+    public NormalBallEntity(Level worldIn, double x, double y, double z) {
         super(ModEntities.WOOD_ENTITY.get(), x, y, z, worldIn);
         this.size = 6;
     }
@@ -46,11 +46,11 @@ public class WoodBallEntity extends ThrowableItemProjectile implements IEntityAd
     protected void onHit(HitResult hitResult) {
         if(!this.level().isClientSide){
             // 爆炸对象
-            WoodBallExplosion explosion = new WoodBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(), this.size, false, Explosion.BlockInteraction.KEEP);
+            NormalBallExplosion explosion = new NormalBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(), this.size, false, Explosion.BlockInteraction.KEEP);
             // 检查是否可以爆炸
             if (!EventHooks.onExplosionStart(this.level(), explosion)) {
                 // 引爆
-                Exploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()), this.size, 6f);
+                NormalExploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()), this.size, 6f);
             }
         }
 
