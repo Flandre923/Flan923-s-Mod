@@ -65,7 +65,8 @@ public class ExampleMod
 
         @SubscribeEvent
         static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-            event.registerEntityRenderer(ModEntities.WOOD_ENTITY.get(), ThrownItemRenderer::new);
+            event.registerEntityRenderer(ModEntities.NORMAL_ENTITY.get(), ThrownItemRenderer::new);
+            event.registerEntityRenderer(ModEntities.END_PEARL_ENTITY.get(),ThrownItemRenderer::new);
         }
 
     }

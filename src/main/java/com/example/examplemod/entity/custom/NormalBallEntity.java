@@ -8,6 +8,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Explosion;
@@ -18,21 +19,29 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.network.NetworkHooks;
 
 public class NormalBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
+    public final Player playerIn;
 
     public final int size;// 爆炸范围
     public NormalBallEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level){
         super(entityType,level);
         this.size = 0;
+        this.playerIn = null;
     }
 
     public NormalBallEntity(Level worldIn, LivingEntity throwerIn, int size) {
-        super(ModEntities.WOOD_ENTITY.get(), throwerIn, worldIn);
+        super(ModEntities.NORMAL_ENTITY.get(), throwerIn, worldIn);
         this.size = size;
+        if(throwerIn instanceof Player player){
+            this.playerIn = player;
+        }else{
+            this.playerIn = null;
+        }
     }
 
     public NormalBallEntity(Level worldIn, double x, double y, double z) {
-        super(ModEntities.WOOD_ENTITY.get(), x, y, z, worldIn);
+        super(ModEntities.NORMAL_ENTITY.get(), x, y, z, worldIn);
         this.size = 6;
+        this.playerIn = null;
     }
 
 

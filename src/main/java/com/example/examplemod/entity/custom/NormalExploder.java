@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -41,10 +42,11 @@ public class NormalExploder {
   private final Entity exploder;
   private final NormalBallExplosion explosion;
 
+
   private int currentRadius;
   private int curX, curY, curZ;
 
-  private List<ItemStack> droppedItems; // map containing all items dropped by the explosion and their amounts
+  public List<ItemStack> droppedItems; // map containing all items dropped by the explosion and their amounts
 
   /**
    * 构造方法
@@ -101,7 +103,7 @@ public class NormalExploder {
   /**
    * 处理爆炸涉及到的实体
    */
-  private void handleEntities() {
+  public void handleEntities() {
     // 定义了一个Predicate判断条件，用于过滤实体
     final Predicate<Entity> predicate = entity -> entity != null
       && !entity.ignoreExplosion()
@@ -165,7 +167,7 @@ public class NormalExploder {
   /**
    * 爆炸结束下执行
    */
-  private void finish() {
+  public void finish() {
     // 爆炸半径的一半
     final int d = (int) this.r / 2;
     // 根据爆炸中心和爆炸半径计算掉落的中心位置

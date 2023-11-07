@@ -21,6 +21,10 @@ public class ModCreativeTab {
                 output.accept(ModItem.STONE_BALL.get());
                 output.accept(ModItem.IRON_BALL.get());
                 output.accept(ModItem.DIAMOND_BALL.get());
+                output.accept(ModItem.END_PEARL_WOOD_BALL.get());
+                output.accept(ModItem.END_PEARL_STONE_BALL.get());
+                output.accept(ModItem.END_PEARL_IRON_BALL.get());
+                output.accept(ModItem.END_PEARL_DIAMOND_BALL.get());
             }).build());
 
 
