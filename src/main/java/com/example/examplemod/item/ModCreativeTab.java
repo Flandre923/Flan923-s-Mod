@@ -18,6 +18,9 @@ public class ModCreativeTab {
             .icon(() -> ModItem.WOOD_BALL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ModItem.WOOD_BALL.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(ModItem.STONE_BALL.get());
+                output.accept(ModItem.IRON_BALL.get());
+                output.accept(ModItem.DIAMOND_BALL.get());
             }).build());
 
 

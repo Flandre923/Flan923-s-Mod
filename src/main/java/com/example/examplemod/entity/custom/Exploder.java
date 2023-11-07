@@ -262,7 +262,7 @@ public class Exploder {
     EventHooks.onExplosionDetonate(this.world, this.explosion, Collections.emptyList(), this.r * 2);
     // 对每个记录的方块处理
     this.explosion.getToBlow().forEach(this::explodeBlock);
-    // 处理方块是否达到上限
+    // 所有方块是否处理完，若不等于blocksPerIteration则说明处理完了，否则就是没处理完。
     return count == this.blocksPerIteration; // can lead to 1 more call where nothing is done, but that's ok
   }
 

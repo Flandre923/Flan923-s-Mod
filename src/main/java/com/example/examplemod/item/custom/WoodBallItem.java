@@ -18,8 +18,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class WoodBallItem extends SnowballItem {
-    public WoodBallItem() {
+    public  final int size; // 爆炸范围
+
+    public WoodBallItem(int size) {
         super((new Properties()).stacksTo(16));
+        this.size = size;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class WoodBallItem extends SnowballItem {
         // TODO: 2023/11/1
         if(!level.isClientSide()){
             // 生成实体
-            WoodBallEntity entity = new WoodBallEntity(level,playerIn);
+            WoodBallEntity entity = new WoodBallEntity(level,playerIn,this.size);
             entity.setItem(itemStack);
             entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
             level.addFreshEntity(entity);
