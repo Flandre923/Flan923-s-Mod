@@ -67,6 +67,8 @@ public class ExampleMod
         static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.NORMAL_ENTITY.get(), ThrownItemRenderer::new);
             event.registerEntityRenderer(ModEntities.END_PEARL_ENTITY.get(),ThrownItemRenderer::new);
+            event.registerEntityRenderer(ModEntities.DISAPPEAR_BALL_ENTITY.get(),ThrownItemRenderer::new);
+            event.registerEntityRenderer(ModEntities.END_PEARL_DISAPPEAR_BALL_ENTITY.get(),ThrownItemRenderer::new);
         }
 
     }

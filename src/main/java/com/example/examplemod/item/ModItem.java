@@ -1,7 +1,9 @@
 package com.example.examplemod.item;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.item.custom.DisappearBallItem;
 import com.example.examplemod.item.custom.EndPearlBallItem;
+import com.example.examplemod.item.custom.EndPearlDisappearBallItem;
 import com.example.examplemod.item.custom.NormalBallItem;
 import com.example.examplemod.util.MaterialSize;
 import net.minecraft.world.item.Item;
@@ -33,6 +35,25 @@ public class ModItem {
             ITEMS.register("end_pearl_iron_ball",()->new EndPearlBallItem(MaterialSize.IRON.getSize()));
     public static final RegistryObject<Item> END_PEARL_DIAMOND_BALL =
             ITEMS.register("end_pearl_diamond_ball",()->new EndPearlBallItem(MaterialSize.DIAMOND.getSize()));
+
+    public static final RegistryObject<Item> DISAPPEAR_WOOD_BALL =
+            ITEMS.register("disappear_wood_ball",()->new DisappearBallItem(MaterialSize.WOOD.getSize()));
+    public static final RegistryObject<Item> DISAPPEAR_STONE_BALL =
+            ITEMS.register("disappear_stone_ball",()->new DisappearBallItem(MaterialSize.STONE.getSize()));
+    public static final RegistryObject<Item> DISAPPEAR_IRON_BALL =
+            ITEMS.register("disappear_iron_ball",()->new DisappearBallItem(MaterialSize.IRON.getSize()));
+    public static final RegistryObject<Item> DISAPPEAR_DIAMOND_BALL =
+            ITEMS.register("disappear_diamond_ball",()->new DisappearBallItem(MaterialSize.DIAMOND.getSize()));
+
+
+    public static final RegistryObject<Item> END_PEARL_DISAPPEAR_WOOD_BALL =
+            ITEMS.register("end_pearl_disappear_wood_ball",()->new EndPearlDisappearBallItem(MaterialSize.WOOD.getSize()));
+    public static final RegistryObject<Item> END_PEARL_DISAPPEAR_STONE_BALL =
+            ITEMS.register("end_pearl_disappear_stone_ball",()->new EndPearlDisappearBallItem(MaterialSize.STONE.getSize()));
+    public static final RegistryObject<Item> END_PEARL_DISAPPEAR_IRON_BALL =
+            ITEMS.register("end_pearl_disappear_iron_ball",()->new EndPearlDisappearBallItem(MaterialSize.IRON.getSize()));
+    public static final RegistryObject<Item> END_PEARL_DISAPPEAR_DIAMOND_BALL =
+            ITEMS.register("end_pearl_disappear_diamond_ball",()->new EndPearlDisappearBallItem(MaterialSize.DIAMOND.getSize()));
 
 
 
