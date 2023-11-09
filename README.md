@@ -23,6 +23,6 @@ Please include the following:：
    - Steps to reproduce
    - ForgeModLoader-client-0.log (the FML log) from the root folder of the client
 
-许可证:
+Licenses:
 ==========
 Code, Textures and binaries are licensed under the [MIT License](https://www.tldrlegal.com/license/mit-license).
