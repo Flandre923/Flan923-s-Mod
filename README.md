@@ -1,43 +1,28 @@
+MineHelper
+=======
+[中文说明](./README_zh.md)
 
-Installation information
+This is my world module development repository, which has added several items to facilitate players' mining.
+
+Items that can be thrown and destroyed after explosion will be retained in the form of falling objects and will not be destroyed.
+
+statement:
 =======
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions at [github](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+Part of the code for this project uses [Tinkers' Construct](https://github.com/slimeknights/tinkersconstruct) The code for the module. I have read the content of the MIT agreement, but personally I am not familiar with the relevant content. If there are any areas that need to be corrected, please contact me.
 
-Once you have your clone, you can initialize your copy.
-
-Setup Process:
---------
-
-Step 1: Open your command-line and browse to the folder where you extracted cloned your copy of this repository to.
-
-Step 2: You're left with a choice.
-If you prefer to use Eclipse:
-1. Run the following command: `gradlew genEclipseRuns` (`./gradlew genEclipseRuns` if you are on Mac/Linux)
-2. Open Eclipse, Import > Existing Gradle Project > Select Folder 
-   or run `gradlew eclipse` to generate the project.
-
-If you prefer to use IntelliJ:
-1. Open IDEA, and import project.
-2. Select your build.gradle file and have it import.
-3. Run the following command: `gradlew genIntellijRuns` (`./gradlew genIntellijRuns` if you are on Mac/Linux)
-4. Refresh the Gradle Project in IDEA if required.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can 
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
+Issue reporting:
 ============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license, if you do not agree with it you can change your mapping names to other crowdsourced names in your 
-build.gradle. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+Please include the following:：
+- Minecraft version
+- MineHelper version
+- Forge version/build
+- Versions of any mods potentially related to the issue
+- Any relevant screenshots are greatly appreciated.
+- For crashes:
+   - Steps to reproduce
+   - ForgeModLoader-client-0.log (the FML log) from the root folder of the client
 
-Additional Resources: 
+许可证:
 ==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+Code, Textures and binaries are licensed under the [MIT License](https://www.tldrlegal.com/license/mit-license).
