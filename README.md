@@ -2,14 +2,14 @@ MineHelper
 =======
 [中文说明](./README_zh.md)
 
-This is my world module development repository, which has added several items to facilitate players' mining.
+This is Minecraft mod development repository, which has added several items to facilitate players' mining.
 
 Items that can be thrown and destroyed after explosion will be retained in the form of falling objects and will not be destroyed.
 
 statement:
 =======
 
-Part of the code for this project uses [Tinkers' Construct](https://github.com/slimeknights/tinkersconstruct) The code for the module. I have read the content of the MIT agreement, but personally I am not familiar with the relevant content. If there are any areas that need to be corrected, please contact me.
+Part of the code for this project uses [Tinkers' Construct](https://github.com/slimeknights/tinkersconstruct) The code for the mod. I have read the content of the MIT agreement, but personally I am not familiar with the relevant content. If there are any areas that need to be corrected, please contact me.
 
 Issue reporting:
 ============
