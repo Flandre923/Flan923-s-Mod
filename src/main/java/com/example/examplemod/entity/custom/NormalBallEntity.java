@@ -24,51 +24,60 @@ import net.neoforged.neoforge.network.NetworkHooks;
 
 public class NormalBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
     public final Player playerIn;
+    public final ItemStack itemStack;
 
     public NormalBallEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level){
         super(entityType,level);
         this.playerIn = null;
+        this.itemStack = ItemStack.EMPTY;
     }
 
-    public NormalBallEntity(Level worldIn, LivingEntity throwerIn) {
+    public NormalBallEntity(Level worldIn, LivingEntity throwerIn,ItemStack itemStack) {
         super(ModEntities.NORMAL_ENTITY.get(), throwerIn, worldIn);
         if(throwerIn instanceof Player player){
             this.playerIn = player;
         }else{
             this.playerIn = null;
         }
+        this.itemStack = itemStack;
     }
 
     public NormalBallEntity(Level worldIn, double x, double y, double z) {
         super(ModEntities.NORMAL_ENTITY.get(), x, y, z, worldIn);
         this.playerIn = null;
+        this.itemStack = ItemStack.EMPTY;
     }
 
 
 
     @Override
     protected Item getDefaultItem() {
-        return ModItem.WOOD_BALL.get();
+        Item item = itemStack.getItem();
+        if(item.equals(ModItem.END_PEARL_WOOD_BALL.get())){
+            return ModItem.END_PEARL_WOOD_BALL.get();
+        }else if(item.equals(ModItem.DISAPPEAR_WOOD_BALL.get())){
+            return ModItem.DISAPPEAR_WOOD_BALL.get();
+        }else if(item.equals(ModItem.END_PEARL_DISAPPEAR_WOOD_BALL.get())){
+            return ModItem.END_PEARL_DISAPPEAR_WOOD_BALL.get();
+        }else{
+            return ModItem.WOOD_BALL.get();
+        }
     }
 
     @Override
     protected void onHit(HitResult hitResult) {
         if(!this.level().isClientSide){
-            ItemStack handItemStack =playerIn.getItemInHand(InteractionHand.MAIN_HAND);
+            ItemStack handItemStack =this.itemStack;
             if(!(handItemStack.getItem() instanceof NormalBallItem)){
-                handItemStack = playerIn.getItemInHand(InteractionHand.OFF_HAND);
-                if(!(handItemStack.getItem() instanceof NormalBallItem)){
-                    return;
-                }
+                return;
             }
-
             NormalBallItem normalBallItem = (NormalBallItem) handItemStack.getItem();
             //爆炸对象
             NormalBallExplosion explosion = new NormalBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(),normalBallItem.size,false, Explosion.BlockInteraction.KEEP);
             // 检查是否可以爆炸
             if (!EventHooks.onExplosionStart(this.level(), explosion)) {
                 // 引爆
-                NormalExploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()),normalBallItem.size, 6f,handItemStack);
+                NormalExploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()),normalBallItem.size, 6f,handItemStack,playerIn);
             }
 
         }

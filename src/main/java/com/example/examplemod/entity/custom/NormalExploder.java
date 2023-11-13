@@ -1,5 +1,7 @@
 package com.example.examplemod.entity.custom;
 
+import com.example.examplemod.item.custom.NormalBallItem;
+import com.example.examplemod.util.MaterialType;
 import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -42,7 +45,7 @@ public class NormalExploder {
   private final Entity exploder;
   private final NormalBallExplosion explosion;
   private final ItemStack breakItem;
-
+  private final Player player;
   private int currentRadius;
   private int curX, curY, curZ;
 
@@ -58,7 +61,7 @@ public class NormalExploder {
    * @param explosionStrength 爆炸的破坏力
    * @param blocksPerIteration 每次迭代处理的方块次数
    */
-  public NormalExploder(Level world, NormalBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration,ItemStack item) {
+  public NormalExploder(Level world, NormalBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration,ItemStack item,Player player) {
     this.r = r;
     this.world = world;
     this.explosion = explosion;
@@ -80,6 +83,7 @@ public class NormalExploder {
     this.droppedItems = Lists.newArrayList();
 
     this.breakItem = item;
+    this.player = player;
   }
 
   /**
@@ -91,9 +95,9 @@ public class NormalExploder {
    * @param r  爆炸的半径
    * @param explosionStrength 爆炸的强度
    */
-  public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength,ItemStack item) {
+  public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength,ItemStack item,Player player) {
     // 创建类
-    NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)),item);
+    NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)),item,player);
     // 提前处理爆炸范围内的实体
     normalExploder.handleEntities();
     // 播放爆炸的声音
@@ -202,10 +206,32 @@ public class NormalExploder {
     for (ItemStack drop : aggregatedDrops) {
       int stacksize = drop.getCount();
       do {
+        NormalBallItem item = (NormalBallItem) breakItem.getItem();
         BlockPos spawnPos = pos.offset(random.nextInt((int) this.r), random.nextInt((int) this.r), random.nextInt((int) this.r));
         ItemStack dropItemstack = drop.copy();
         dropItemstack.setCount(Math.min(stacksize, 64));
-        Block.popResource(this.world, spawnPos, dropItemstack);
+
+        if(item.materialType.equals(MaterialType.COMMON)){
+          Block.popResource(this.world, spawnPos, dropItemstack);
+        }else if(item.materialType.equals(MaterialType.DISAPPEAR)){
+          if(dropItemstack.getItem().equals(Items.COBBLED_DEEPSLATE) ||
+          dropItemstack.getItem().equals(Items.COBBLESTONE) ){
+            //nothing
+          }else{
+            Block.popResource(this.world, spawnPos, dropItemstack);
+          }
+        }else if(item.materialType.equals(MaterialType.END_PEARL)){
+          spawnPos = player.blockPosition();
+          Block.popResource(this.world, spawnPos, dropItemstack);
+        }else if(item.materialType.equals(MaterialType.DISAPPEAR_AND_END_PEARL)){
+          spawnPos = player.blockPosition();
+          if(dropItemstack.getItem().equals(Items.COBBLED_DEEPSLATE) ||
+                    dropItemstack.getItem().equals(Items.COBBLESTONE) ){
+            //nothing
+          }else{
+            Block.popResource(this.world, spawnPos, dropItemstack);
+          }
+        }
         stacksize -= dropItemstack.getCount();
       }
       while (stacksize > 0);

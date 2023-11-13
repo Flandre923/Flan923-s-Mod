@@ -1,6 +1,7 @@
 package com.example.examplemod.item.custom;
 
 import com.example.examplemod.entity.custom.NormalBallEntity;
+import com.example.examplemod.util.MaterialType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -17,10 +18,12 @@ import java.util.List;
 
 public class NormalBallItem extends SnowballItem {
     public  final int size; // 爆炸范围
+    public final MaterialType materialType;
 
-    public NormalBallItem(int size) {
+    public NormalBallItem(int size,MaterialType materialType) {
         super((new Properties()).stacksTo(16));
         this.size = size;
+        this.materialType = materialType;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class NormalBallItem extends SnowballItem {
     }
 
     public void generateEntity(Level level,Player playerIn,ItemStack itemStack){
-        NormalBallEntity entity = new NormalBallEntity(level,playerIn);
+        NormalBallEntity entity = new NormalBallEntity(level,playerIn,itemStack);
         entity.setItem(itemStack);
         entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
         level.addFreshEntity(entity);
