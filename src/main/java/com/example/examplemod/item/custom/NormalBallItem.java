@@ -6,6 +6,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SnowballItem;
 import net.minecraft.world.item.TooltipFlag;
@@ -38,7 +39,7 @@ public class NormalBallItem extends SnowballItem {
     }
 
     public void generateEntity(Level level,Player playerIn,ItemStack itemStack){
-        NormalBallEntity entity = new NormalBallEntity(level,playerIn,this.size);
+        NormalBallEntity entity = new NormalBallEntity(level,playerIn);
         entity.setItem(itemStack);
         entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
         level.addFreshEntity(entity);
@@ -47,5 +48,10 @@ public class NormalBallItem extends SnowballItem {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(itemStack, level, tooltip, flag);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack p_41456_) {
+        return true;
     }
 }

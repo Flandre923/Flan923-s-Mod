@@ -13,7 +13,7 @@ public class EndPearlDisappearBallItem extends NormalBallItem{
 
     @Override
     public void generateEntity(Level level,Player playerIn,ItemStack itemStack){
-        EndPearlDisappearBallEntity entity = new EndPearlDisappearBallEntity(level,playerIn,this.size);
+        EndPearlDisappearBallEntity entity = new EndPearlDisappearBallEntity(level,playerIn);
         entity.setItem(itemStack);
         entity.shootFromRotation(playerIn,playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0f);
         level.addFreshEntity(entity);

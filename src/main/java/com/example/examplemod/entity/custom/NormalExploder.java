@@ -41,7 +41,7 @@ public class NormalExploder {
   public final Level world;
   private final Entity exploder;
   private final NormalBallExplosion explosion;
-
+  private final ItemStack breakItem;
 
   private int currentRadius;
   private int curX, curY, curZ;
@@ -58,7 +58,7 @@ public class NormalExploder {
    * @param explosionStrength 爆炸的破坏力
    * @param blocksPerIteration 每次迭代处理的方块次数
    */
-  public NormalExploder(Level world, NormalBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration) {
+  public NormalExploder(Level world, NormalBallExplosion explosion, Entity exploder, BlockPos location, double r, double explosionStrength, int blocksPerIteration,ItemStack item) {
     this.r = r;
     this.world = world;
     this.explosion = explosion;
@@ -78,6 +78,8 @@ public class NormalExploder {
     this.curZ = 0;
 
     this.droppedItems = Lists.newArrayList();
+
+    this.breakItem = item;
   }
 
   /**
@@ -89,9 +91,9 @@ public class NormalExploder {
    * @param r  爆炸的半径
    * @param explosionStrength 爆炸的强度
    */
-  public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength) {
+  public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength,ItemStack item) {
     // 创建类
-    NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)));
+    NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)),item);
     // 提前处理爆炸范围内的实体
     normalExploder.handleEntities();
     // 播放爆炸的声音
@@ -306,8 +308,10 @@ public class NormalExploder {
     BlockState blockstate = this.world.getBlockState(blockpos);
     // 将该方块的掉落物添加到list中
     if (!this.world.isClientSide && blockstate.canDropFromExplosion(this.world, blockpos, this.explosion)) {
+
+
       BlockEntity tileentity = blockstate.hasBlockEntity() ? this.world.getBlockEntity(blockpos) : null;
-      LootParams.Builder builder = (new LootParams.Builder((ServerLevel) this.world)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, tileentity);
+      LootParams.Builder builder = (new LootParams.Builder((ServerLevel) this.world)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, this.breakItem).withOptionalParameter(LootContextParams.BLOCK_ENTITY, tileentity);
 
       this.droppedItems.addAll(blockstate.getDrops(builder));
     }

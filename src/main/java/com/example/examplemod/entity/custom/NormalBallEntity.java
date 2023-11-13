@@ -2,15 +2,19 @@ package com.example.examplemod.entity.custom;
 
 import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.item.ModItem;
+import com.example.examplemod.item.custom.NormalBallItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
@@ -21,16 +25,13 @@ import net.neoforged.neoforge.network.NetworkHooks;
 public class NormalBallEntity extends ThrowableItemProjectile implements IEntityAdditionalSpawnData {
     public final Player playerIn;
 
-    public final int size;// 爆炸范围
     public NormalBallEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level){
         super(entityType,level);
-        this.size = 0;
         this.playerIn = null;
     }
 
-    public NormalBallEntity(Level worldIn, LivingEntity throwerIn, int size) {
+    public NormalBallEntity(Level worldIn, LivingEntity throwerIn) {
         super(ModEntities.NORMAL_ENTITY.get(), throwerIn, worldIn);
-        this.size = size;
         if(throwerIn instanceof Player player){
             this.playerIn = player;
         }else{
@@ -40,7 +41,6 @@ public class NormalBallEntity extends ThrowableItemProjectile implements IEntity
 
     public NormalBallEntity(Level worldIn, double x, double y, double z) {
         super(ModEntities.NORMAL_ENTITY.get(), x, y, z, worldIn);
-        this.size = 6;
         this.playerIn = null;
     }
 
@@ -54,13 +54,23 @@ public class NormalBallEntity extends ThrowableItemProjectile implements IEntity
     @Override
     protected void onHit(HitResult hitResult) {
         if(!this.level().isClientSide){
-            // 爆炸对象
-            NormalBallExplosion explosion = new NormalBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(), this.size, false, Explosion.BlockInteraction.KEEP);
+            ItemStack handItemStack =playerIn.getItemInHand(InteractionHand.MAIN_HAND);
+            if(!(handItemStack.getItem() instanceof NormalBallItem)){
+                handItemStack = playerIn.getItemInHand(InteractionHand.OFF_HAND);
+                if(!(handItemStack.getItem() instanceof NormalBallItem)){
+                    return;
+                }
+            }
+
+            NormalBallItem normalBallItem = (NormalBallItem) handItemStack.getItem();
+            //爆炸对象
+            NormalBallExplosion explosion = new NormalBallExplosion(this.level(), this, null, null, this.getX(), this.getY(), this.getZ(),normalBallItem.size,false, Explosion.BlockInteraction.KEEP);
             // 检查是否可以爆炸
             if (!EventHooks.onExplosionStart(this.level(), explosion)) {
                 // 引爆
-                NormalExploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()), this.size, 6f);
+                NormalExploder.startExplosion(this.level(), explosion, this, new BlockPos((int) this.getX(), (int) this.getY(), (int) this.getZ()),normalBallItem.size, 6f,handItemStack);
             }
+
         }
 
         if(!this.level().isClientSide){

@@ -180,7 +180,7 @@ public class DisappearExploder {
      */
     public static void startExplosion(Level world, NormalBallExplosion explosion, Entity entity, BlockPos location, double r, double explosionStrength) {
         // 创建类
-        NormalExploder normalExploder = new NormalExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)));
+        DisappearExploder normalExploder = new DisappearExploder(world, explosion, entity, location, r, explosionStrength, Math.max(50, (int) (r * r * r / 10d)));
         // 提前处理爆炸范围内的实体
         normalExploder.handleEntities();
         // 播放爆炸的声音
