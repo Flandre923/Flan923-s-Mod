@@ -1,9 +1,13 @@
 package com.example.examplemod;
 
+import com.example.examplemod.block.ModBlocks;
 import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.item.ModCreativeTab;
 import com.example.examplemod.item.ModItem;
+import com.example.examplemod.screen.ModMenuTypes;
+import com.example.examplemod.screen.MyAnvilBlockScreen;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
@@ -39,6 +43,8 @@ public class ExampleMod
         ModItem.register( modEventBus);
         ModEntities.register(modEventBus);
         ModCreativeTab.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         CREATIVE_MODE_TABS.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
@@ -61,11 +67,13 @@ public class ExampleMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            MenuScreens.register(ModMenuTypes.MY_ANVIL_BLOCK_MENU.get(), MyAnvilBlockScreen::new);
         }
 
         @SubscribeEvent
         static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.NORMAL_ENTITY.get(), ThrownItemRenderer::new);
+
         }
 
     }

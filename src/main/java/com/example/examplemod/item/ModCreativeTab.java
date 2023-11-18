@@ -1,6 +1,7 @@
 package com.example.examplemod.item;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -33,6 +34,8 @@ public class ModCreativeTab {
                 output.accept(ModItem.END_PEARL_DISAPPEAR_STONE_BALL.get());
                 output.accept(ModItem.END_PEARL_DISAPPEAR_IRON_BALL.get());
                 output.accept(ModItem.END_PEARL_DISAPPEAR_DIAMOND_BALL.get());
+
+                output.accept(ModBlocks.MY_ANVIL.get());
             }).build());
 
 

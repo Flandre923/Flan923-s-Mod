@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegistryObject;
 
 public class ModItem {
-    protected static final DeferredRegister<Item> ITEMS =
+    public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ExampleMod.MODID);
 
 
