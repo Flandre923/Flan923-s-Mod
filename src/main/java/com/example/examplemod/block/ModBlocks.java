@@ -29,7 +29,7 @@ public class ModBlocks {
                             .mapColor(MapColor.METAL)
                             .requiresCorrectToolForDrops()
                             .strength(5.0F, 1200.0F)
-                            .sound(SoundType.ANVIL)
+                            .sound(SoundType.STONE)
                             .pushReaction(PushReaction.BLOCK)
             )
     );
