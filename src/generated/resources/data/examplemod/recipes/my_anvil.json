@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "examplemod",
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "$": {
+      "item": "minecraft:cobblestone"
+    },
+    "*": {
+      "item": "examplemod:wood_ball"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "$$$"
+  ],
+  "result": {
+    "item": "examplemod:my_anvil"
+  },
+  "show_notification": true
+}

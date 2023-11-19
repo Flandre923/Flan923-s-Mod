@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "examplemod:my_anvil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_woodball": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "examplemod:wood_ball"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_woodball"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "examplemod:my_anvil"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,19 @@
+{
+  "block.examplemod.my_anvil": "My Anvil",
+  "item.examplemod.diamond_ball": "Diamond Ball",
+  "item.examplemod.disappear_diamond_ball": "Diamond Disappear Ball",
+  "item.examplemod.disappear_iron_ball": "Iron Disappear Ball",
+  "item.examplemod.disappear_stone_ball": "Stone Disappear Ball",
+  "item.examplemod.disappear_wood_ball": "Wood Disappear Ball",
+  "item.examplemod.end_pearl_diamond_ball": "Diamond End Pearl Ball",
+  "item.examplemod.end_pearl_disappear_diamond_ball": "Wood End Pearl Disappear Ball",
+  "item.examplemod.end_pearl_disappear_iron_ball": "Wood End Pearl Disappear Ball",
+  "item.examplemod.end_pearl_disappear_stone_ball": "Wood End Pearl Disappear Ball",
+  "item.examplemod.end_pearl_disappear_wood_ball": "Wood End Pearl Disappear Ball",
+  "item.examplemod.end_pearl_iron_ball": "Iron End Pearl Ball",
+  "item.examplemod.end_pearl_stone_ball": "Stone End Pearl Ball",
+  "item.examplemod.end_pearl_wood_ball": "Wood End Pearl Ball",
+  "item.examplemod.iron_ball": "Iron Ball",
+  "item.examplemod.stone_ball": "Stone Ball",
+  "item.examplemod.wood_ball": "Wood Ball"
+}
