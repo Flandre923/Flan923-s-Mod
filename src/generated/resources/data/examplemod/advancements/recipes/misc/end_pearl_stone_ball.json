@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "examplemod:my_anvil"
+        "recipe": "examplemod:end_pearl_stone_ball"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "minecraft:gunpowder"
+              "examplemod:wood_ball"
             ]
           }
         ]
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "examplemod:my_anvil"
+      "examplemod:end_pearl_stone_ball"
     ]
   },
   "sends_telemetry_event": false

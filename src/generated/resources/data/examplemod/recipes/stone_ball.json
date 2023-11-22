@@ -4,22 +4,23 @@
   "group": "examplemod",
   "key": {
     "#": {
-      "tag": "minecraft:planks"
+      "tag": "minecraft:stone_tool_materials"
     },
     "$": {
-      "item": "minecraft:cobblestone"
+      "item": "minecraft:gunpowder"
     },
     "*": {
-      "item": "examplemod:wood_ball"
+      "item": "minecraft:sand"
     }
   },
   "pattern": [
-    "###",
-    "#*#",
-    "$$$"
+    " # ",
+    "*$*",
+    " * "
   ],
   "result": {
-    "item": "examplemod:my_anvil"
+    "count": 16,
+    "item": "examplemod:stone_ball"
   },
   "show_notification": true
 }

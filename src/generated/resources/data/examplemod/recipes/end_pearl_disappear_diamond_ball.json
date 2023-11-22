@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "examplemod",
+  "key": {
+    "#": {
+      "item": "examplemod:diamond_ball"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    },
+    "A": {
+      "item": "minecraft:cobblestone"
+    },
+    "B": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "*$*",
+    "B*B"
+  ],
+  "result": {
+    "count": 16,
+    "item": "examplemod:end_pearl_disappear_diamond_ball"
+  },
+  "show_notification": true
+}

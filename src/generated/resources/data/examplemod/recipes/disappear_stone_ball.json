@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "examplemod",
+  "key": {
+    "#": {
+      "item": "examplemod:stone_ball"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    },
+    "A": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "examplemod:disappear_stone_ball"
+  },
+  "show_notification": true
+}
