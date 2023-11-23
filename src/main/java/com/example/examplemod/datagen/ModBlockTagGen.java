@@ -2,9 +2,11 @@ package com.example.examplemod.datagen;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.tag.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -22,6 +24,15 @@ public class ModBlockTagGen extends BlockTagsProvider {
                 .add(ModBlocks.MY_ANVIL.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.MY_ANVIL.get());
+
+        tag(ModTags.Blocks.CAN_BALL_REPLACED)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.COBBLED_DEEPSLATE)
+                .add(Blocks.DIORITE)
+                .add(Blocks.GRANITE)
+                .add(Blocks.DRIPSTONE_BLOCK)
+                .add(Blocks.ANDESITE)
+                .add(Blocks.TUFF);
 
     }
 }

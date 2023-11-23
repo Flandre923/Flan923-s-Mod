@@ -1,6 +1,7 @@
 package com.example.examplemod.entity.custom;
 
 import com.example.examplemod.item.custom.NormalBallItem;
+import com.example.examplemod.tag.ModTags;
 import com.example.examplemod.util.MaterialType;
 import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
@@ -18,6 +20,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -25,6 +29,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.TickEvent;
 
@@ -214,8 +219,8 @@ public class NormalExploder {
         if(item.materialType.equals(MaterialType.COMMON)){
           Block.popResource(this.world, spawnPos, dropItemstack);
         }else if(item.materialType.equals(MaterialType.DISAPPEAR)){
-          if(dropItemstack.getItem().equals(Items.COBBLED_DEEPSLATE) ||
-          dropItemstack.getItem().equals(Items.COBBLESTONE) ){
+          RuleTest ruleTest = new TagMatchTest(ModTags.Blocks.CAN_BALL_REPLACED);
+          if(ruleTest.test(Block.byItem(dropItemstack.getItem()).defaultBlockState(),player.getRandom())){
             //nothing
           }else{
             Block.popResource(this.world, spawnPos, dropItemstack);
@@ -225,8 +230,8 @@ public class NormalExploder {
           Block.popResource(this.world, spawnPos, dropItemstack);
         }else if(item.materialType.equals(MaterialType.DISAPPEAR_AND_END_PEARL)){
           spawnPos = player.blockPosition();
-          if(dropItemstack.getItem().equals(Items.COBBLED_DEEPSLATE) ||
-                    dropItemstack.getItem().equals(Items.COBBLESTONE) ){
+          RuleTest ruleTest = new TagMatchTest(ModTags.Blocks.CAN_BALL_REPLACED);
+          if(ruleTest.test(Block.byItem(dropItemstack.getItem()).defaultBlockState(),player.getRandom())){
             //nothing
           }else{
             Block.popResource(this.world, spawnPos, dropItemstack);
