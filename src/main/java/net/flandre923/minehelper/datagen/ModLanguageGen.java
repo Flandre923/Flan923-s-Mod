@@ -28,10 +28,10 @@ public class ModLanguageGen extends LanguageProvider {
         add(ModItem.DISAPPEAR_IRON_BALL.get(),"Iron Disappear Ball");
         add(ModItem.DISAPPEAR_DIAMOND_BALL.get(),"Diamond Disappear Ball");
         add(ModItem.END_PEARL_DISAPPEAR_WOOD_BALL.get(),"Wood End Pearl Disappear Ball");
-        add(ModItem.END_PEARL_DISAPPEAR_STONE_BALL.get(),"Wood End Pearl Disappear Ball");
-        add(ModItem.END_PEARL_DISAPPEAR_IRON_BALL.get(),"Wood End Pearl Disappear Ball");
-        add(ModItem.END_PEARL_DISAPPEAR_DIAMOND_BALL.get(),"Wood End Pearl Disappear Ball");
-        add(ModBlocks.MY_ANVIL.get(),"My Anvil");
+        add(ModItem.END_PEARL_DISAPPEAR_STONE_BALL.get(),"Stone End Pearl Disappear Ball");
+        add(ModItem.END_PEARL_DISAPPEAR_IRON_BALL.get(),"Iron End Pearl Disappear Ball");
+        add(ModItem.END_PEARL_DISAPPEAR_DIAMOND_BALL.get(),"Diamond End Pearl Disappear Ball");
+        add(ModBlocks.MY_ANVIL.get(),"Ball Item Anvil");
 
 
     }
