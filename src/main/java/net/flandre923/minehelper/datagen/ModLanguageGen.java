@@ -2,6 +2,7 @@ package net.flandre923.minehelper.datagen;
 
 import net.flandre923.minehelper.MineHelper;
 import net.flandre923.minehelper.block.ModBlocks;
+import net.flandre923.minehelper.item.ModCreativeTab;
 import net.flandre923.minehelper.item.ModItem;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -13,6 +14,7 @@ public class ModLanguageGen extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModCreativeTab.TUTORIAL_TAB_STRING,"MineHelper Tab");
         add(ModItem.WOOD_BALL.get(),"Wood Ball");
         add(ModItem.STONE_BALL.get(),"Stone Ball");
         add(ModItem.IRON_BALL.get(),"Iron Ball");

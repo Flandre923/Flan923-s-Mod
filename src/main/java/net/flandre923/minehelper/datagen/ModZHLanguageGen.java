@@ -2,6 +2,7 @@ package net.flandre923.minehelper.datagen;
 
 import net.flandre923.minehelper.MineHelper;
 import net.flandre923.minehelper.block.ModBlocks;
+import net.flandre923.minehelper.item.ModCreativeTab;
 import net.flandre923.minehelper.item.ModItem;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -13,6 +14,7 @@ public class ModZHLanguageGen extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModCreativeTab.TUTORIAL_TAB_STRING,"挖矿小帮手物品栏");
         add(ModItem.WOOD_BALL.get(),"木头炸弹");
         add(ModItem.STONE_BALL.get(),"石头炸弹");
         add(ModItem.IRON_BALL.get(),"铁炸弹");
