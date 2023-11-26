@@ -1,0 +1,19 @@
+{
+  "block.minehelper.my_anvil": "炸弹铁砧",
+  "item.minehelper.diamond_ball": "钻石炸弹",
+  "item.minehelper.disappear_diamond_ball": "钻石消失炸弹",
+  "item.minehelper.disappear_iron_ball": "铁消失炸弹",
+  "item.minehelper.disappear_stone_ball": "石头消失炸弹",
+  "item.minehelper.disappear_wood_ball": "木头消失炸弹",
+  "item.minehelper.end_pearl_diamond_ball": "钻石传送炸弹",
+  "item.minehelper.end_pearl_disappear_diamond_ball": "木头传送消失炸弹",
+  "item.minehelper.end_pearl_disappear_iron_ball": "木头传送消失炸弹",
+  "item.minehelper.end_pearl_disappear_stone_ball": "铁传送消失炸弹",
+  "item.minehelper.end_pearl_disappear_wood_ball": "木头传送消失炸弹",
+  "item.minehelper.end_pearl_iron_ball": "铁传送炸弹",
+  "item.minehelper.end_pearl_stone_ball": "石头传送炸弹",
+  "item.minehelper.end_pearl_wood_ball": "木头传送炸弹",
+  "item.minehelper.iron_ball": "铁炸弹",
+  "item.minehelper.stone_ball": "石头炸弹",
+  "item.minehelper.wood_ball": "木头炸弹"
+}

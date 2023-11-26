@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minehelper:block/my_anvil"
+    }
+  }
+}

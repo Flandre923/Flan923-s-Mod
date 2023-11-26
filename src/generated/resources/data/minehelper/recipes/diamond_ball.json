@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "minehelper",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    " # ",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "minehelper:diamond_ball"
+  },
+  "show_notification": true
+}

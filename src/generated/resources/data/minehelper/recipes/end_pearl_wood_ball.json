@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "minehelper",
+  "key": {
+    "#": {
+      "item": "minehelper:wood_ball"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    },
+    "A": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "minehelper:end_pearl_wood_ball"
+  },
+  "show_notification": true
+}

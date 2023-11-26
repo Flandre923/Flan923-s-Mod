@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "minehelper",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "$": {
+      "item": "minecraft:cobblestone"
+    },
+    "*": {
+      "item": "minehelper:wood_ball"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "$$$"
+  ],
+  "result": {
+    "item": "minehelper:my_anvil"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "minehelper",
+  "key": {
+    "#": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    " # ",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "minehelper:stone_ball"
+  },
+  "show_notification": true
+}
