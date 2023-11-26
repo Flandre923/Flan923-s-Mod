@@ -28,9 +28,9 @@ public class ModZHLanguageGen extends LanguageProvider {
         add(ModItem.DISAPPEAR_IRON_BALL.get(),"铁消失炸弹");
         add(ModItem.DISAPPEAR_DIAMOND_BALL.get(),"钻石消失炸弹");
         add(ModItem.END_PEARL_DISAPPEAR_WOOD_BALL.get(),"木头传送消失炸弹");
-        add(ModItem.END_PEARL_DISAPPEAR_STONE_BALL.get(),"铁传送消失炸弹");
-        add(ModItem.END_PEARL_DISAPPEAR_IRON_BALL.get(),"木头传送消失炸弹");
-        add(ModItem.END_PEARL_DISAPPEAR_DIAMOND_BALL.get(),"木头传送消失炸弹");
+        add(ModItem.END_PEARL_DISAPPEAR_STONE_BALL.get(),"石头传送消失炸弹");
+        add(ModItem.END_PEARL_DISAPPEAR_IRON_BALL.get(),"铁传送消失炸弹");
+        add(ModItem.END_PEARL_DISAPPEAR_DIAMOND_BALL.get(),"钻石传送消失炸弹");
         add(ModBlocks.MY_ANVIL.get(),"炸弹铁砧");
 
 
