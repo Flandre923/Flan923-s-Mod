@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "flansmod",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "$": {
+      "item": "minecraft:cobblestone"
+    },
+    "*": {
+      "item": "flansmod:wood_ball"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "$$$"
+  ],
+  "result": {
+    "item": "flansmod:my_anvil"
+  }
+}

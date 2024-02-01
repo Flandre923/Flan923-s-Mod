@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "flansmod",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    " # ",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "flansmod:wood_ball"
+  }
+}

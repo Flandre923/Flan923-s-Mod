@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "flansmod:my_anvil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wood_ball": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gunpowder"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wood_ball"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "flansmod:my_anvil"
+    ]
+  }
+}

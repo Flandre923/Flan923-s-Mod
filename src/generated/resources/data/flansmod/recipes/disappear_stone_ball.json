@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "flansmod",
+  "key": {
+    "#": {
+      "item": "flansmod:stone_ball"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    },
+    "A": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "flansmod:disappear_stone_ball"
+  }
+}

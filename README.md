@@ -1,28 +1,28 @@
-MineHelper
-=======
-[中文说明](./README_zh.md)
 
-This is Minecraft mod development repository, which has added several items to facilitate players' mining.
-
-Items that can be thrown and destroyed after explosion will be retained in the form of falling objects and will not be destroyed.
-
-statement:
+Installation information
 =======
 
-Part of the code for this project uses [Tinkers' Construct](https://github.com/slimeknights/tinkersconstruct) The code for the mod. I have read the content of the MIT agreement, but personally I am not familiar with the relevant content. If there are any areas that need to be corrected, please contact me.
+This template repository can be directly cloned to get you started with a new
+mod. Simply create a new repository cloned from this one, by following the
+instructions at [github](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
-Issue reporting:
+Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+
+> **Note**: For Eclipse, use tasks in `Launch Group` instead of ones founds in `Java Application`. A preparation task must run before launching the game. NeoGradle uses launch groups to do these subsequently.
+
+If at any point you are missing libraries in your IDE, or you've run into problems you can
+run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
+{this does not affect your code} and then start the process again.
+
+Mapping Names:
 ============
-Please include the following:：
-- Minecraft version
-- MineHelper version
-- Forge version/build
-- Versions of any mods potentially related to the issue
-- Any relevant screenshots are greatly appreciated.
-- For crashes:
-   - Steps to reproduce
-   - ForgeModLoader-client-0.log (the FML log) from the root folder of the client
+By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
+in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
+license, if you do not agree with it you can change your mapping names to other crowdsourced names in your 
+build.gradle. For the latest license text, refer to the mapping file itself, or the reference copy here:
+https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
 
-Licenses:
+Additional Resources: 
 ==========
-Code, Textures and binaries are licensed under the [MIT License](https://www.tldrlegal.com/license/mit-license).
+Community Documentation: https://docs.neoforged.net/  
+NeoForged Discord: https://discord.neoforged.net/

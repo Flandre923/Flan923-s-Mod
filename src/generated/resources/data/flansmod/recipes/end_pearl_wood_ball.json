@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "flansmod",
+  "key": {
+    "#": {
+      "item": "flansmod:wood_ball"
+    },
+    "$": {
+      "item": "minecraft:gunpowder"
+    },
+    "*": {
+      "item": "minecraft:sand"
+    },
+    "A": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "*$*",
+    " * "
+  ],
+  "result": {
+    "count": 16,
+    "item": "flansmod:end_pearl_wood_ball"
+  }
+}

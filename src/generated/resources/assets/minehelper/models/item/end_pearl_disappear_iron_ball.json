@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "minehelper:item/end_pearl_disappear_iron_ball"
-  }
-}
