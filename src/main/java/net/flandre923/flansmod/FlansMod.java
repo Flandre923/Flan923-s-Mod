@@ -1,12 +1,14 @@
 package net.flandre923.flansmod;
 
 import com.mojang.logging.LogUtils;
+import net.flandre923.flansmod.client.ClientHandler;
 import net.flandre923.flansmod.common.block.ModBlocks;
 import net.flandre923.flansmod.common.entity.ModEntities;
 import net.flandre923.flansmod.common.item.ModCreativeTab;
 import net.flandre923.flansmod.common.item.ModItem;
 import net.flandre923.flansmod.common.screen.ModMenuTypes;
 import net.flandre923.flansmod.common.screen.MyAnvilBlockScreen;
+import net.flandre923.flansmod.common.sound.ModSounds;
 import net.flandre923.flansmod.common.util.NormalMaterialBallHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -55,6 +57,7 @@ public class FlansMod
         ModCreativeTab.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
         NormalMaterialBallHelper.init();
         NeoForge.EVENT_BUS.register(this);
     }
@@ -78,6 +81,7 @@ public class FlansMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenuTypes.MY_ANVIL_BLOCK_MENU.get(), MyAnvilBlockScreen::new);
+//            event.enqueueWork(ClientHandler::setup);
         }
 
         @SubscribeEvent

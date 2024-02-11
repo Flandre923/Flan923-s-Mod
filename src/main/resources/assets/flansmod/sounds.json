@@ -1,0 +1,62 @@
+{
+  "item.sv371_1_attack1": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack1",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack1",
+        "stream": "true"
+      }
+    ]
+  },
+  "item.sv371_1_attack2": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack2",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack2",
+        "stream": "true"
+      }
+    ]
+  },
+  "item.sv371_1_attack3": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack3",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack3",
+        "stream": "true"
+      }
+    ]
+  },
+  "item.sv371_1_attack7": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack7",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack7",
+        "stream": "true"
+      }
+    ]
+  },
+  "item.sv371_1_attack11": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack11",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack11",
+        "stream": "true"
+      }
+    ]
+  },
+  "item.sv371_1_attack13": {
+    "category": "voice",
+    "subtitle": "subtitle.flansmod.item.sv371_1_attack13",
+    "sounds": [
+      {
+        "name": "flansmod:item/sv371_1_attack13",
+        "stream": "true"
+      }
+    ]
+  }
+}

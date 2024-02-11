@@ -4,6 +4,7 @@ import net.flandre923.flansmod.FlansMod;
 import net.flandre923.flansmod.common.item.ball.MaterialSize;
 import net.flandre923.flansmod.common.item.ball.MaterialType;
 import net.flandre923.flansmod.common.item.ball.NormalBallItem;
+import net.flandre923.flansmod.common.item.cusotm.TezcatlipocaPistol;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -54,7 +55,8 @@ public class ModItem {
             ITEMS.register("end_pearl_disappear_diamond_ball",()->new NormalBallItem(MaterialSize.DIAMOND.getSize(),MaterialType.DISAPPEAR_AND_END_PEARL));
 
 
-
+    public static final DeferredHolder<Item, TezcatlipocaPistol> TEZCATLIPOCA_PISTOL =
+            ITEMS.register("tezcatlipoca_pistol",()->new TezcatlipocaPistol(new Item.Properties().stacksTo(1)));
 
 
     public static void register(IEventBus eventBus){
